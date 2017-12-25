@@ -38,19 +38,26 @@ keytool –genkey –alias android123.keystore –keyalg RSA –validity 20000 �
 
 [Unknown]：lili# E# C/ Z! O) I; K6 r7 M-
 您的组织单位名称是什么？
+
 [Unknown]：snoopy' |3 v& I! _/ l
 您的组织名称是什么？
+
 [Unknown]：snoopy team
 您所在的城市或区域名称是什么？) L# V' |. E0 f; {
 [Unknown]：beijing
+
 您所在的州或省份名称是什么？
 [Unknown]：beijing
+
 该单位的两字母国家代码是什么
 [Unknown]：CN- m. ~1 W. i0
+
 CN=lili, U=snoopy, O=snoopy team, L=beijing, ST=beijing, C=CN正确吗？
 [否]：Y
+
 输入< mine.keystore>的主密码
 （如果和keystore密码相同，按回车）：
+
 7. 对重新打包后的apk文件进行签名：
 jarsigner -verbose -keystore android123.keystore -signedjar new.apk old.apk android123.keystore
 /*解释：* ^, {& k1 Z. M* P/ M+ K5 n5 hjarsigner是Java的签名工具# K8 ~% s# Y. @6 P
