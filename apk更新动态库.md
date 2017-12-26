@@ -1,5 +1,19 @@
-Android的apk文件实际上就是zip文件。通过解压软件解压后可以看到apk文件内部的内容，并且对其中的文件进行修改或更新。但是如果直接将修改后的
 
+1、首先查看apk的相关组成，来了解应该从何处出手：
+
+http://blog.csdn.net/bupt073114/article/details/42298337
+
+
+2、查看签名文件 META-INF 其文件中对应的内容：
+
+http://www.blogfshare.com/android-apk-sign.html
+
+
+3、替换的相关操作：
+
+http://blog.csdn.net/loushuai/article/details/48858483
+
+Android的apk文件实际上就是zip文件。通过解压软件解压后可以看到apk文件内部的内容，并且对其中的文件进行修改或更新。但是如果直接将修改后的
 
 1. apktool官网：http://ibotpeaches.github.io/Apktool/
 下载apktool.jar & apktool.bat (for windows).
@@ -11,7 +25,8 @@ $ apktool d test.apk
 5. 重新打包:
 $ apktool b test
 打包文件在apk文件夹中的dist目录下.
-6. 生成签名证书(只需生成一次)
+
+6.*** 生成签名证书(只需生成一次)
 运行：
 keytool –genkey –alias android123.keystore –keyalg RSA –validity 20000 –keystore android123.keystore
 /*解释：keytool工具是Java JDK自带的证书工具
@@ -69,3 +84,6 @@ jarsigner -verbose -keystore android123.keystore -signedjar new.apk old.apk andr
 -new.apk表示签名后生成的APK名称，% v! a7 e2 v4 W# ]; Gold.apk表示未签名的APK Android软件， mine.keystore表示别名
 
 */
+
+
+
