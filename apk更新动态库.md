@@ -1,30 +1,52 @@
 
-1、首先查看apk的相关组成，来了解应该从何处出手：
+此文件已经亲测可成，
+
+
+一、首先查看apk的相关组成，来了解应该从何处出手：
 
 http://blog.csdn.net/bupt073114/article/details/42298337
 
 
-2、查看签名文件 META-INF 其文件中对应的内容：
+
+二、查看签名文件 META-INF 其文件中对应的内容：
 
 http://www.blogfshare.com/android-apk-sign.html
 
 
-3、替换的相关操作：
+
+三、替换的相关操作：（必看）
 
 http://blog.csdn.net/loushuai/article/details/48858483
 
 Android的apk文件实际上就是zip文件。通过解压软件解压后可以看到apk文件内部的内容，并且对其中的文件进行修改或更新。但是如果直接将修改后的
 
-1. apktool官网：http://ibotpeaches.github.io/Apktool/
+
+1. apktool官网：
+
+http://ibotpeaches.github.io/Apktool/
+
 下载apktool.jar & apktool.bat (for windows).
+
+
 2. Windows将其拷贝至C://Windows (不是必须的, 能找到就行), linux拷贝至/usr/local/bin.
+
+
 3. 解压apk包:
+
 $ apktool d test.apk
+
 解包后会在当前目录生成与apk同名文件夹.
+
+
 4. 更新解压后的so文件.如果目录下有build文件夹的话，最好将其中的apk目录删掉.
+
+
 5. 重新打包:
+
 $ apktool b test
+
 打包文件在apk文件夹中的dist目录下.
+
 
 6.*** 生成签名证书(只需生成一次)
 运行：
