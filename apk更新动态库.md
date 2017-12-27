@@ -14,7 +14,7 @@ http://www.blogfshare.com/android-apk-sign.html
 
 
 
-三、替换的相关操作：（必看）
+三、替换的相关操作：（必看）（zmz761028zmz761028aa为密钥的密码）
 
 http://blog.csdn.net/loushuai/article/details/48858483
 
