@@ -25,3 +25,5 @@ pip install pymysql（可为其他库）
 然后重新加载eclipse的Windows->preference->interpreters中的python项,再重启eclipse
 
 http://blog.csdn.net/errors_in_life/article/details/65936133
+
+
