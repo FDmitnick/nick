@@ -23,12 +23,18 @@ http://www.linuxidc.com/Linux/2016-08/133961.htm
 
 
 
+
+
+
+
 二、无法与PC端共享路径：
 
 1、选择左上角虚拟机->安装VMware Tools（若出现：无法手动启动VMware Tools安装）
 
 2、（参照下文在添加虚拟机时两个DVD都选择linux.iso，如果开始出现失败，重启一到两次）
 https://jingyan.baidu.com/article/3c48dd348c4504e10ae35810.html
+
+
 
 
 
@@ -70,6 +76,14 @@ writable=yes
 
 最后没有完成可以看：http://www.linuxidc.com/Linux/2011-07/38996.htm
 
+
+
+
+
+
+
+四、在Ubuntu16.04中安装nfs并使用
+http://blog.csdn.net/csdn_duomaomao/article/details/77822883
 
 
 
