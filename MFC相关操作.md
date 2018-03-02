@@ -1,4 +1,7 @@
-//1、在EDIT中的显示
+MFC相关操作
+====
+
+# //1、在EDIT中的显示
 
 
 	CString strText_1(_T(""));
@@ -7,7 +10,7 @@
 
 
 
-//2、从txt文件中读取数据
+# //2、从txt文件中读取数据
 	vector<double>m_data;
     TCHAR path[255];  
     //桌面目录  
