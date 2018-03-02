@@ -1,6 +1,7 @@
 Ubuntu相关事项：
+====
 
-一、重装系统：
+# 一、重装系统：
 U盘插入时：
 选择usb开头的文件选择后进行安装
 安装时选择  sda/adb 表达是否要格式化U盘分区，不格式化则会出现双启动，双启动很卡，所以格式化
@@ -27,7 +28,7 @@ http://www.linuxidc.com/Linux/2016-08/133961.htm
 
 
 
-二、无法与PC端共享路径：
+# 二、无法与PC端共享路径：
 
 1、选择左上角虚拟机->安装VMware Tools（若出现：无法手动启动VMware Tools安装）
 
@@ -38,7 +39,7 @@ https://jingyan.baidu.com/article/3c48dd348c4504e10ae35810.html
 
 
 
-三、Samba安装
+# 三、Samba安装
 1、安装
 
 #sudo apt-get install samba
@@ -82,7 +83,7 @@ writable=yes
 
 
 
-四、在Ubuntu16.04中安装nfs并使用
+# 四、在Ubuntu16.04中安装nfs并使用
 http://blog.csdn.net/csdn_duomaomao/article/details/77822883
 
 
