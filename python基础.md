@@ -1,7 +1,10 @@
 python基础
 ====
 
+
 # 一、环境搭建
+
+
 ## 1、python不用第三方库运行.py
 
   cmd 命令下，输入python，后Enter
