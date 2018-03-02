@@ -31,9 +31,35 @@ GPRS调试
 9、AT+CSQ    获取信号强度
 
 ## 6、LinkPPPConnect
+
 10、先 AT 命令一次，如若回答有效开始下一步命令
+
     如果有apn，将写入 ： AT$MYNETCON=1,\"APN\",\"%s\"\r + apn 给GPRS模块
+    
     如若没有则：        AT$MYNETCON=1,\"APN\",\"%s\"\r", "CMNET"
+
+    网络连接前各种参数设置：
+    
+    APN：字符串类型
+    
+    USERPWD：“user,passwd”   用户名和密码
+
+    CFGT:2  传输时间设置
+
+11、GprsPPPConnect（开始执行连接了）
+
+    
+
+
+
+
+
+
+
+
+
+
+
 
 
 
