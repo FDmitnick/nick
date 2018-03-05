@@ -34,6 +34,9 @@ GPRS调试
 
 10、先 AT 命令一次，如若回答有效开始下一步命令
 
+    AT+CSQ ：查看信号一波
+    
+
     如果有apn，将写入 ： AT$MYNETCON=1,\"APN\",\"%s\"\r + apn 给GPRS模块
     
     如若没有则：        AT$MYNETCON=1,\"APN\",\"%s\"\r", "CMNET"
@@ -46,11 +49,38 @@ GPRS调试
 
     CFGT:2  传输时间设置
 
-11、GprsPPPConnect（开始执行连接了）
+11、GprsPPPConnect （1）（开始执行连接了）
 
+    GprsPPPConnect写一遍用户名和密码
     
+    如果是    CDMA 用户名和密码为：card card
+    
+             GPRS 用户名和密码为：test test
+    
+    sprintf((char *)buf, "AT$MYNETCON=1,\"USERPWD\",\"%s,%s\"\r", pppuser, ppppass);
 
+12、GprsPPPConnect (2) 当传输模式为CHANNEL_DATA_MODE则
 
+#define CHANNEL_DATA_MODE	0	//透明数据传输
+#define CHANNEL_CHAR_MODE	1	//非透明数据传输
+
+   发送：
+
+"AT$MYNETCON=1,\"CFGT\",100\r"
+
+"AT$MYNETCON=1,\"CFGP\",1460\r"
+
+"AT$MYNETCON=1,\"AUTH\",1\r"
+
+"AT$MYNETURC=1\r"
+
+   模块 型号为 M590 时就发送：
+
+"AT$MYNETACT=1,0\r"
+
+"AT$MYNETACT=1,1\r"
+
+13、GprsPPPConnect （3） ，GprsWaitPPPConnect
 
 
 
@@ -64,3 +94,18 @@ GPRS调试
 
 
 # 3、 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
