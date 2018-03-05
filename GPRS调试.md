@@ -22,7 +22,7 @@ GPRS调试
 
 4、AT$MYGMR，    获取通信模块版本信息
 5、AT+CPIN?     检测手机SIM卡是否安装好
-6、AT$MYCCID     获取SIM卡序列号
+6、AT$MYCCID     获取SIM卡序列号ccid号
 
 ## 4、LinkSimCheck
 
@@ -37,20 +37,21 @@ GPRS调试
 
 10、先 AT 命令一次，如若回答有效开始下一步命令
 
-    AT+CSQ ：查看信号一波
+  *  AT+CSQ ：查看信号一波
     
+  *  ***（AT$MYNETCON）设置网络连接初始化参数。***
 
-    如果有apn，将写入 ： AT$MYNETCON=1,\"APN\",\"%s\"\r + apn 给GPRS模块
+  *  如果有apn，将写入 ： AT$MYNETCON=1,\"APN\",\"%s\"\r + apn 给GPRS模块
     
-    如若没有则：        AT$MYNETCON=1,\"APN\",\"%s\"\r", "CMNET"
+  *  如若没有则：        AT$MYNETCON=1,\"APN\",\"%s\"\r", "CMNET"
 
-    网络连接前各种参数设置：
+  *  网络连接前各种参数设置：
     
-    APN：字符串类型
+  *  APN：字符串类型
     
-    USERPWD：“user,passwd”   用户名和密码
+  *  USERPWD：“user,passwd”   用户名和密码
 
-    CFGT:2  传输时间设置
+  *  CFGT:2  传输时间设置
 
 11、GprsPPPConnect （1）（开始执行连接了）
 
@@ -69,34 +70,48 @@ GPRS调试
 
    发送：
 
-"AT$MYNETCON=1,\"CFGT\",100\r"
+*"AT$MYNETCON=1,\"CFGT\",100\r"
 
-"AT$MYNETCON=1,\"CFGP\",1460\r"
+*"AT$MYNETCON=1,\"CFGP\",1460\r"
 
-"AT$MYNETCON=1,\"AUTH\",1\r"
+*"AT$MYNETCON=1,\"AUTH\",1\r"
 
-"AT$MYNETURC=1\r"
+*"AT$MYNETURC=1\r"
 
    模块 型号为 M590 时就发送：
 
-"AT$MYNETACT=1,0\r"
+*"AT$MYNETACT=1,0\r"   激活网络连接
 
-"AT$MYNETACT=1,1\r"
+*"AT$MYNETACT=1,1\r"
 
 13、GprsPPPConnect （3） ，GprsWaitPPPConnect -> GprsReadLocalIP
 
 GprsReadLocalIP：
 
-发送     ： "AT$MYNETACT?\r"
+*发送     ： "AT$MYNETACT?\r" 在网络已激活的情况下，显示本机获取的LOCAL IP
 
-等待回应 ： "$MYNETACT:"
+*等待回应 ： "$MYNETACT:"     回应值应为相应的本设备IP
 
 ## 7、LinkConnect  开始关键的连接
 
+#define CHANNEL_DATA_MODE	0	//透明数据传输
+#define CHANNEL_CHAR_MODE	1	//非透明数据传输
 
+TCP通信时：
 
+   *如果为 DATA_MODE 则传输（"AT$MYNETCREATE=1,0,1,\"%u.%u.%u.%u\",%u\r",IP.ip[0], IP.ip[1], IP.ip[2], IP.ip[3], IP.port）
 
+  *如果为 CHAR_MODE 则传输 （"AT$MYNETSRV=1,1,0,0,\"%u.%u.%u.%u:%u\"\r",IP.ip[0], IP.ip[1], IP.ip[2], IP.ip[3], IP.port)	
 
+UDP通信时：
+
+**DATA_MODE：**
+
+  * "AT$MYNETCREATE=1,2,1,\"%u.%u.%u.%u\",%u\r",IP.ip[0], IP.ip[1], IP.ip[2], IP.ip[3], IP.port)*
+   
+**CHAR_MODE：**
+
+   *"AT$MYNETSRV=1,1,2,0,\"%u.%u.%u.%u:%u\"\r", IP.ip[0], IP.ip[1], IP.ip[2], IP.ip[3], IP.port)*
 
 
 
