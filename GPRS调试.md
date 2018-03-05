@@ -57,9 +57,11 @@ GPRS调试
 
     GprsPPPConnect写一遍用户名和密码
     
+    
     如果是    CDMA 用户名和密码为：card card
     
              GPRS 用户名和密码为：test test
+             
     
     sprintf((char *)buf, "AT$MYNETCON=1,\"USERPWD\",\"%s,%s\"\r", pppuser, ppppass);
 
@@ -70,40 +72,40 @@ GPRS调试
 
    发送：
 
-*"AT$MYNETCON=1,\"CFGT\",100\r"
+**"AT$MYNETCON=1,\"CFGT\",100\r"
 
-*"AT$MYNETCON=1,\"CFGP\",1460\r"
+**"AT$MYNETCON=1,\"CFGP\",1460\r"
 
-*"AT$MYNETCON=1,\"AUTH\",1\r"
+**"AT$MYNETCON=1,\"AUTH\",1\r"
 
-*"AT$MYNETURC=1\r"
+**"AT$MYNETURC=1\r"
 
    模块 型号为 M590 时就发送：
 
-*"AT$MYNETACT=1,0\r"   激活网络连接
+**"AT$MYNETACT=1,0\r"   激活网络连接
 
-*"AT$MYNETACT=1,1\r"
+**"AT$MYNETACT=1,1\r"
 
 13、GprsPPPConnect （3） ，GprsWaitPPPConnect -> GprsReadLocalIP
 
 GprsReadLocalIP：
 
-*发送     ： "AT$MYNETACT?\r" 在网络已激活的情况下，显示本机获取的LOCAL IP
+**发送     ： "AT$MYNETACT?\r" 在网络已激活的情况下，显示本机获取的LOCAL IP
 
-*等待回应 ： "$MYNETACT:"     回应值应为相应的本设备IP
+**等待回应 ： "$MYNETACT:"     回应值应为相应的本设备IP
 
-## 7、LinkConnect  开始关键的连接
+## 7、LinkConnect  开始关键的连接服务器
 
 #define CHANNEL_DATA_MODE	0	//透明数据传输
 #define CHANNEL_CHAR_MODE	1	//非透明数据传输
 
-TCP通信时：
+### 7.1 TCP通信时：（AT$MYNETCREATE 为IP访问控制，连接服务器）
 
    *如果为 DATA_MODE 则传输（"AT$MYNETCREATE=1,0,1,\"%u.%u.%u.%u\",%u\r",IP.ip[0], IP.ip[1], IP.ip[2], IP.ip[3], IP.port）
 
   *如果为 CHAR_MODE 则传输 （"AT$MYNETSRV=1,1,0,0,\"%u.%u.%u.%u:%u\"\r",IP.ip[0], IP.ip[1], IP.ip[2], IP.ip[3], IP.port)	
 
-UDP通信时：
+### 7.2 UDP通信时：（AT$MYNETSRV 为IP访问控制，连接服务器）
 
 **DATA_MODE：**
 
@@ -112,6 +114,20 @@ UDP通信时：
 **CHAR_MODE：**
 
    *"AT$MYNETSRV=1,1,2,0,\"%u.%u.%u.%u:%u\"\r", IP.ip[0], IP.ip[1], IP.ip[2], IP.ip[3], IP.port)*
+
+返回“CONNECT”则为成功
+
+### 7.3 
+
+发送 ： "AT$MYNETCLOSE=1\r" 先关闭连接
+
+循环三次 ： "AT$MYNETOPEN=1\r" 开启服务 回复 "$MYNETOPEN: 1"，则成功推出循环
+
+## LinkLogin
+
+//68 32 00 32 00 68 C9 00 10 02 00 00 02 70 00 00 01 00 4E 16
+写入此一长串数据，传输给GPRS
+
 
 
 
