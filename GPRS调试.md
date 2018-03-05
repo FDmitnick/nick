@@ -1,6 +1,9 @@
 GPRS调试
 ====
 
+【13 版的AT指令集】： https://wenku.baidu.com/view/cebc5a11195f312b3069a56d.html
+
+
 # 1、硬件
 1、内核设置好IO串口的驱动，然后通过open打开串口
 
@@ -80,7 +83,17 @@ GPRS调试
 
 "AT$MYNETACT=1,1\r"
 
-13、GprsPPPConnect （3） ，GprsWaitPPPConnect
+13、GprsPPPConnect （3） ，GprsWaitPPPConnect -> GprsReadLocalIP
+
+GprsReadLocalIP：
+
+发送     ： "AT$MYNETACT?\r"
+
+等待回应 ： "$MYNETACT:"
+
+## 7、LinkConnect  开始关键的连接
+
+
 
 
 
