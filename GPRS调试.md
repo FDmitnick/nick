@@ -123,7 +123,7 @@ GprsReadLocalIP：
 
 循环三次 ： "AT$MYNETOPEN=1\r" 开启服务 回复 "$MYNETOPEN: 1"，则成功推出循环
 
-## LinkLogin
+## 8、LinkLogin
 
 //68 32 00 32 00 68 C9 00 10 02 00 00 02 70 00 00 01 00 4E 16
 写入此一长串数据，传输给GPRS
