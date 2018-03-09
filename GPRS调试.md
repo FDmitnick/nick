@@ -1,10 +1,12 @@
 GPRS调试
 ====
 ## 13 版的AT指令集
+
 [13 版的AT指令集（参考）]：（https://wenku.baidu.com/view/cebc5a11195f312b3069a56d.html）
 
 
 # 1、硬件
+
 1、内核设置好IO串口的驱动，然后通过open打开串口
 
 # 2、软件启动流程
@@ -16,17 +18,21 @@ GPRS调试
 ## 2、LinkAtCheck
 
 2、发送AT指令，   告诉GPRS模块需要开始工作
+
 3、发送ATE0，    GPRS 回显开启
 
 ## 3、LinkSimCheck
 
 4、AT$MYGMR，    获取通信模块版本信息
+
 5、AT+CPIN?     检测手机SIM卡是否安装好
+
 6、AT$MYCCID     获取SIM卡序列号ccid号
 
 ## 4、LinkSimCheck
 
 7、AT+CREG?    网络注册状态查询，可能问题有SIM卡欠费问题等
+
 8、AT+COPS?    查询运营商
 
 ## 5、LinkInitSMS
@@ -68,6 +74,7 @@ GPRS调试
 12、GprsPPPConnect (2) 当传输模式为CHANNEL_DATA_MODE则
 
 #define CHANNEL_DATA_MODE	0	//透明数据传输
+
 #define CHANNEL_CHAR_MODE	1	//非透明数据传输
 
    发送：
@@ -97,6 +104,7 @@ GprsReadLocalIP：
 ## 7、LinkConnect  开始关键的连接服务器
 
 #define CHANNEL_DATA_MODE	0	//透明数据传输
+
 #define CHANNEL_CHAR_MODE	1	//非透明数据传输
 
 ### 7.1 TCP通信时：（AT$MYNETCREATE 为IP访问控制，连接服务器）
@@ -126,6 +134,7 @@ GprsReadLocalIP：
 ## 8、LinkLogin
 
 //68 32 00 32 00 68 C9 00 10 02 00 00 02 70 00 00 01 00 4E 16
+
 写入此一长串数据，传输给GPRS
 
 
